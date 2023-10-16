@@ -9,7 +9,7 @@ log = logging.getLogger("uvicorn")
 
 class Settings(BaseSettings):
     ALLOWED_ORIGINS: str
-    SQS_PARSE_URL: str
+    SQS_URL: str
     APP_ENVIRONMENT: str
 
     class Config:
