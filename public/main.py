@@ -7,12 +7,12 @@ from config.app import Settings, get_settings
 from routes import router
 
 description = """
-Artisan. 🚀
+Artisan for cloud native app development. 🚀
 """
 
 tags_metadata = [
     {
-        "name": "Users",
+        "name": "Default",
         "description": "This endpoint allows performing operations related to users. It provides functionality to save and download users through a RESTful API.",
     }
 ]
@@ -23,7 +23,7 @@ if settings.APP_ENVIRONMENT == "local":
     root_path = "/"
 
 app = FastAPI(
-    title="Users",
+    title="Artisan",
     description=description,
     version="0.1.2",
     terms_of_service="N/A",
