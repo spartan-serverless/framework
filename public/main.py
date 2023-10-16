@@ -25,7 +25,7 @@ if settings.APP_ENVIRONMENT == "local":
 app = FastAPI(
     title="Artisan",
     description=description,
-    version="0.1.2",
+    version="0.1.0",
     terms_of_service="N/A",
     contact={
         "name": "Sydel Palinlin",

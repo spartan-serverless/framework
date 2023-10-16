@@ -11,7 +11,7 @@ settings = get_settings()
 
 
 router = APIRouter(
-    prefix="/api", tags=["Default"], responses={404: {"description": "Not found"}}
+    prefix="/api", tags=["Health Check"], responses={404: {"description": "Not found"}}
 )
 
 
