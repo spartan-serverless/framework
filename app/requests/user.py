@@ -1,12 +1,12 @@
 from pydantic import BaseModel
 
 
-class UserCreate(BaseModel):
+class UserCreateRequest(BaseModel):
     username: str
     email: str
     password: str
 
 
-class UserEdit(UserCreate):
+class UserEditRequest(UserCreateRequest):
     email: None
     password: None
