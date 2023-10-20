@@ -21,6 +21,7 @@ class Queue():
 
 
 	def receive(self, url: str):
+		
 		response = self.sqs.receive_message(
 				QueueUrl = url,
 				AttributeNames = ['All'],
