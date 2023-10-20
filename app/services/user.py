@@ -16,7 +16,7 @@ class UserService():
 		return results
 
 
-	def find(self, id: int):
+	def find(self, id: int = None):
 		try:
 			session = Session()
 			results = session.query(User).filter_by(id=id).first()
@@ -28,7 +28,7 @@ class UserService():
 		return results
 
 
-	def save(self):
+	def save(self, data: dict = None):
 		try:
 			session = Session()
 			new_data = User(**data)
