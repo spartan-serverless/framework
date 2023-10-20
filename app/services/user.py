@@ -87,7 +87,7 @@ class UserService():
                 else:
                     raise ValueError(f"User with ID {id} not found")
 
-        qaexcept Exception as e:
+        except Exception as e:
 
             session.rollback()
 
