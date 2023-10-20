@@ -3,6 +3,7 @@ from app.models.user import User
 
 
 class UserService():
+
 	def all(self):
 		try:
 			session = Session()
@@ -14,7 +15,8 @@ class UserService():
 
 		return results
 
-	def find(self, id):
+
+	def find(self, id: int):
 		try:
 			session = Session()
 			results = session.query(User).filter_by(id=id).first()
@@ -25,7 +27,8 @@ class UserService():
 
 		return results
 
-	def save():
+
+	def save(self):
 		try:
 			session = Session()
 			new_data = User(**data)
@@ -42,7 +45,8 @@ class UserService():
 
 		return new_data.id
 
-	def update():
+
+	def update(self, id: int):
 		try:
 			with Session() as session:
 				user = session.query(User).filter_by(id=id).first()
@@ -65,7 +69,7 @@ class UserService():
 		return user
 
 
-	def delete(self, id):
+	def delete(self, id: int):
 		try:
 			session = Session()
 			session.query(User).filter_by(id=id).delete()
