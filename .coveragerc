@@ -2,7 +2,7 @@
 
 [run]
 source = my_module
-omit = */.serverless/*, */tests/*, .serverless, .venv/*, venv/*
+omit = */.serverless/*, */tests/*, */.venv/*, */venv/*
 
 [report]
 show_missing = true
