@@ -10,10 +10,10 @@ log = logging.getLogger("uvicorn")
 class Settings(BaseSettings):
     ALLOWED_ORIGINS: str
     APP_ENVIRONMENT: str
-    DATABASE_HOST: str
-    DATABASE_NAME: str
-    DATABASE_USERNAME: str
-    DATABASE_PASSWORD: str
+    DB_HOST: str
+    DB_NAME: str
+    DB_USERNAME: str
+    DB_PASSWORD: str
 
     class Config:
         env_file = ".env"
