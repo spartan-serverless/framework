@@ -9,6 +9,7 @@ class UserService():
 			session = Session()
 			results = session.query(User).all()
 		except Exception as e:
+            print(f"Error occured: {e}")
             raise e
 		finally:
 			session.close()
@@ -22,6 +23,7 @@ class UserService():
 			results = session.query(User).filter_by(id=id).first()
 		except Exception as e:
 			print(f"Error occured: {e}")
+            raise e
 		finally:
 			session.close()
 
