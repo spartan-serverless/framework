@@ -66,33 +66,34 @@ class UserService():
 
 			raise e
 
-		finally
+		finally:
 			session.close()
 
 		return user
 
 
     def update(self, id: int = None, data: dict = None):
-		try:
-			with Session() as session:
-				user = session.query(User).filter_by(id=id).first()
+        try:
+            with Session() as session:
+                user = session.query(User).filter_by(id=id).first()
 
-				if user:
-					for key, value in data.items():
-						setattr(user, key, value)
+                if user:
+                    for key, value in data.items():
+                        setattr(user, key, value)
 
 
-					session.commit()
+                    session.commit()
 
-				else:
-					raise ValueError(f"User with ID {id} not found")
-		except Exception as e:
+                else:
+                    raise ValueError(f"User with ID {id} not found")
 
-			session.rollback()
+        except Exception as e:
 
-			raise e
+            session.rollback()
 
-		return user
+            raise e
+
+        return user
 
 
 	def delete(self, id: int):

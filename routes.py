@@ -1,8 +1,4 @@
-import json
-import os
-from typing import Union
-
-from fastapi import APIRouter, Depends, Header, HTTPException, Security
+from fastapi import APIRouter
 
 from config.app import get_settings
 

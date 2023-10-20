@@ -1,7 +1,3 @@
-import sys
-
-sys.path.append(".")
-
 from app.models.user import User
 
 

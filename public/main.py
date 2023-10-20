@@ -1,10 +1,8 @@
-import os
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
 
-from config.app import Settings, get_settings
+from config.app import get_settings
 from routes import router
 
 description = """
