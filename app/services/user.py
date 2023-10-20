@@ -9,7 +9,7 @@ class UserService():
 			session = Session()
 			results = session.query(User).all()
 		except Exception as e:
-			print(f"Error occured: {e}")
+            raise e
 		finally:
 			session.close()
 
