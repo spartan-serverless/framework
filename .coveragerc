@@ -1,0 +1,8 @@
+# .coveragerc
+
+[run]
+source = my_module
+omit = */.serverless/*, */tests/*, .serverless, .venv/*, venv/*
+
+[report]
+show_missing = true
