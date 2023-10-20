@@ -20,3 +20,7 @@ poetry install
 ```bash
 uvicorn public.main:app --reload --port 8888
 ```
+or
+```bash
+poetry run uvicorn public.main:app --reload --port 8888
+```
