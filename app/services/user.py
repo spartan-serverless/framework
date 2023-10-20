@@ -16,7 +16,7 @@ class UserService():
 		return results
 
 
-	def find(self, id: int = None):
+	def find(self, id: int):
 		try:
 			session = Session()
 			results = session.query(User).filter_by(id=id).first()
@@ -69,7 +69,10 @@ class UserService():
 		finally
 			session.close()
 
-		return user:
+		return user
+
+
+    def update(self, id: int = None, data: dict = None):
 		try:
 			with Session() as session:
 				user = session.query(User).filter_by(id=id).first()
