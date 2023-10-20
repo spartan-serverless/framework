@@ -9,10 +9,10 @@ load_dotenv()
 host = os.environ.get("DB_HOST")
 port = os.environ.get("DB_PORT")
 database = os.environ.get("DB_NAME")
-user = os.environ.get("DB_USER")
+username = os.environ.get("DB_USERNAME")
 password = os.environ.get("DB_PASSWORD")
 
-database_url = f"postgresql://{user}:{password}@{host}:{port}/{database}"
+database_url = f"postgresql+pg8000://{username}:{password}@{host}:{port}/{database}"
 engine = create_engine(database_url)
 
 Session = sessionmaker(bind=engine)
