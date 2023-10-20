@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-
 load_dotenv()
 
 host = os.environ.get("DB_HOST")
