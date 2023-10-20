@@ -1,7 +1,8 @@
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
-import os
 
 from config.app import Settings, get_settings
 from routes import router
@@ -33,7 +34,7 @@ app = FastAPI(
         "email": "sydel.palinlin@gmail.com",
     },
     openapi_tags=tags_metadata,
-    root_path=root_path
+    root_path=root_path,
 )
 
 app.add_middleware(

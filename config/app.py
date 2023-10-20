@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     DATABASE_NAME: str
     DATABASE_USERNAME: str
     DATABASE_PASSWORD: str
-    
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"

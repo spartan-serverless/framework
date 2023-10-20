@@ -1,11 +1,4 @@
-
-
 def main(event, context):
+    # Implement your code here...
 
-
-	# Implement your code here...
-
-
-	return {
-		"StatusCode": 200
-	}
+    return {"StatusCode": 200}

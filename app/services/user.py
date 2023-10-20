@@ -1,5 +1,5 @@
-from config.database import Session
 from app.models.user import User
+from config.database import Session
 
 
 class UserService():
@@ -46,7 +46,30 @@ class UserService():
 		return new_data.id
 
 
-	def update(self, id: int):
+	def update(self, id: int = None, data: dict = None):
+		try:
+			session = Session()
+			user = session.query(User).filter_by(id=id).first()
+
+			if user:
+				for key, value in data.items():
+					setattr(user, key, value)
+
+				session.commit()
+
+			else:
+				raise ValueError(f"User with ID {id} not found")
+
+		except Exception as e:
+
+			session.rollback()
+
+			raise e
+
+		finally
+			session.close()
+
+		return user:
 		try:
 			with Session() as session:
 				user = session.query(User).filter_by(id=id).first()
@@ -76,7 +99,7 @@ class UserService():
 			session.commit()
 
 		except Exception as e:
-			
+
 			session.rollback()
 			raise e
 
@@ -84,4 +107,3 @@ class UserService():
 			session.close()
 
 		return id
-

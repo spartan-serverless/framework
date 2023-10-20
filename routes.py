@@ -2,10 +2,9 @@ import json
 import os
 from typing import Union
 
-from fastapi import APIRouter, Depends, HTTPException, Security, Header
+from fastapi import APIRouter, Depends, Header, HTTPException, Security
 
 from config.app import get_settings
-
 
 settings = get_settings()
 
