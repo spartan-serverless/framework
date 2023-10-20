@@ -1,7 +1,7 @@
 # Artisan
 
 ## About Artisan
-Artisan is a tool that simplifies the creation of serverless applications on AWS by generating Python code for classes and more. It streamlines your development process, saving you time and ensuring code consistency in your serverless projects.
+Artisan is a tool that simplifies the creation of serverless applications on popular cloud provider by generating Python codes for classes and more. It streamlines your development process, saving you time and ensuring code consistency in your serverless projects.
 
 1. Install all the required packages
 ```bash
