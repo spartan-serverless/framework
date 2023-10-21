@@ -17,5 +17,6 @@ engine = create_engine(database_url)
 
 Session = sessionmaker(bind=engine)
 
+
 def get_session() -> Session:
     return Session()
