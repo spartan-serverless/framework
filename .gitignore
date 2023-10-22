@@ -162,5 +162,4 @@ cython_debug/
 .serverless
 .DS_Store
 .vscode/
-tinker.py
 *.db
