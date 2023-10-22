@@ -6,7 +6,7 @@ from config.app import get_settings
 from routes import router
 
 description = """
-Artisan for cloud native app development. 🚀
+Artisan is a tool that simplifies the creation of serverless applications on popular cloud providers by generating Python code for classes and more. It streamlines your development process, saving you time and ensuring code consistency in your serverless projects. 🚀
 """
 
 tags_metadata = [
