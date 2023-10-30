@@ -3,7 +3,7 @@ import json
 import boto3
 
 
-class Queue:
+class QueueService:
     def __init__(self) -> None:
         self.sqs = boto3.client("sqs")
 
