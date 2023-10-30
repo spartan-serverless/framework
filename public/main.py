@@ -28,7 +28,7 @@ app = FastAPI(
     terms_of_service="N/A",
     contact={
         "name": "Sydel Palinlin",
-        "url": "https://github.com/nerdmonkey",
+        "url": "sydel.palinlin@gmail.com",
         "email": "sydel.palinlin@gmail.com",
     },
     openapi_tags=tags_metadata,
