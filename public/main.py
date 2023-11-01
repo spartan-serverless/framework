@@ -18,7 +18,7 @@ tags_metadata = [
 
 settings = get_settings()
 root_path = "/dev/"
-if settings.APP_ENVIRONMENT == "local":
+if settings.APP_ENVIRONMENT == "local" or settings.APP_ENVIRONMENT == "test":
     root_path = "/"
 
 app = FastAPI(
