@@ -1,8 +1,8 @@
-from app.models.user import User
+from app.services.user import UserService
 
 
 def run():
-    user_model = User()
+    user_service = UserService()
 
     users = [
         {
@@ -18,4 +18,4 @@ def run():
     ]
 
     for user in users:
-        user_model.create(**user)
+        user_service.save(user)

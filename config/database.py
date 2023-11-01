@@ -8,7 +8,7 @@ load_dotenv()
 
 database = os.environ.get('DB_NAME')
 
-if os.environ.get("APP_ENVIRONMENT") == "test":
+if os.environ.get("DB_TYPE") == "sqlite":
     database_url = f"sqlite:///./database/{database}.db"
     engine = create_engine(database_url, connect_args={"check_same_thread": False})
 else:
