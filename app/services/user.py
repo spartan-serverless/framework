@@ -1,6 +1,5 @@
 from app.models.user import User
 from config.database import Session
-import logging
 
 class UserService:
 
