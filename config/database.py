@@ -14,6 +14,7 @@ password = os.environ.get("DB_PASSWORD")
 
 # database_url = f"postgresql+pg8000://{username}:{password}@{host}:{port}/{database}"
 # engine = create_engine(database_url)
+
 database_url = f"sqlite:///./database/artisan.db"
 engine = create_engine(database_url)
 
