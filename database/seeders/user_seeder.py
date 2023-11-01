@@ -7,13 +7,23 @@ def run():
     users = [
         {
             "username": "andeng",
-            "email": "andeng@artisan-sample.com",
-            "password": "sample111",
+            "email": "andeng@python-artisan.com",
+            "password": "andeng",
+        },
+        {
+            "username": "iviang",
+            "email": "iviang@python-artisan.com",
+            "password": "iviang",
         },
         {
             "username": "loki",
-            "email": "loki@artisan-sample.com",
-            "password": "sample222",
+            "email": "loki@python-artisan.com",
+            "password": "loki",
+        },
+        {
+            "username": "lara",
+            "email": "lara@python-artisan.com",
+            "password": "lara",
         },
     ]
 
