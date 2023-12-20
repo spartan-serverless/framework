@@ -6,6 +6,7 @@ from datetime import date
 class ProfileResponse(BaseModel):
 
     id: int
+    email: Optional[str]
     firstname: Optional[str]
     lastname: Optional[str]
     middlename: Optional[str]
@@ -27,6 +28,7 @@ class SingleProfileResponse(BaseModel):
 class ProfileUpdateResponse(BaseModel):
 
     id: int
+    email: Optional[str]
     firstname: Optional[str]
     lastname: Optional[str]
     middlename: Optional[str]

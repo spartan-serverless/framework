@@ -6,7 +6,7 @@ from datetime import date
 
 class ProfileUpdateRequest(BaseModel):
 
-
+    email: Optional[str]
     firstname: Optional[str]
     lastname: Optional[str]
     middlename: Optional[str]

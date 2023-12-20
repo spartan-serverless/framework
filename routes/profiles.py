@@ -19,14 +19,14 @@ route = APIRouter(
     prefix="/api", tags=["Profiles"], responses={404: {"description": "Not found"}}
 )
 
+##response_model=SingleProfileResponse
 
-
-@route.put("/profiles/1", status_code=200, response_model=SingleProfileResponse)
+@route.put("/profiles", status_code=200, )
 async def update_user(
-    profile: ProfileUpdateRequest, db: Session = Depends(get_session)
+    update_request: ProfileUpdateRequest, db: Session = Depends(get_session)
 ):
-
-        profile_service.db = db
-        updated_profile = profile_service.update(1, profile)
-        return {"data": updated_profile, "status_code": 200}
+    profile_service.db = db
+    updated_profile = profile_service.update(3, update_request)
+    print(updated_profile)
+    return {"data": updated_profile, "status_code": 200}
 
