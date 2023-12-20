@@ -1,4 +1,5 @@
 from . import user_seeder as UserSeeder
+from . import profile_seeder as ProfileSeeder
 
 
 class DatabaseSeeder:
@@ -18,6 +19,7 @@ class DatabaseSeeder:
         seeders can be added and executed in this method as needed.
         """
         UserSeeder.run()
+        ProfileSeeder.run()
 
 
 if __name__ == "__main__":
