@@ -3,10 +3,11 @@ from typing import List
 from fastapi import HTTPException
 from sqlalchemy.exc import DatabaseError
 from sqlalchemy.orm import Session
+from datetime import datetime, date
 
 from app.models.profile import Profile
-from app.requests.profile import ProfileCreateRequest, ProfileUpdateRequest
-from app.responses.profile import ProfileCreateResponse, ProfileResponse, ProfileUpdateResponse
+from app.requests.profile import  ProfileUpdateRequest
+from app.responses.profile import ProfileResponse, ProfileUpdateResponse
 
 import logging
 
@@ -42,34 +43,6 @@ class ProfileService:
             raise HTTPException(status_code=404, detail="Profile not found")
         return profile
 
-    def all(self, page: int, items_per_page: int) -> List[ProfileResponse]:
-        """
-        Retrieve all profiles with pagination.
-
-        Args:
-            page (int): The page number.
-            items_per_page (int): The number of items per page.
-
-        Returns:
-            Tuple[List[ProfileResponse], int]: A tuple containing the list of profile responses and the total number of profiles.
-
-        Raises:
-            HTTPException: If there is an internal server error.
-        """
-        try:
-            offset = (page - 1) * items_per_page
-            logging.info(f"offset: {offset}")
-            profiles = self.db.query(Profile).offset(offset).limit(items_per_page).all()
-            responses = [
-                ProfileResponse(**profile.__dict__) for profile in profiles
-            ]
-
-            return responses, self.total()
-        except DatabaseError as e:
-            raise HTTPException(status_code=500, detail="Internal server error")
-        except Exception as e:
-            raise HTTPException(status_code=500, detail="Internal server error")
-
     def find(self, id: int) -> ProfileResponse:
         """
         Find a profile by their ID and return the profile response.
@@ -87,28 +60,36 @@ class ProfileService:
         return ProfileResponse(**item.__dict__)
 
     def update(self, id: int, profile: ProfileUpdateRequest) -> ProfileUpdateResponse:
-        """
-        Update a profile in the database.
+        try:
+            item = self.get_by_id(id)
+            data = profile.dict(exclude_unset=True)
+            
+            for key, value in data.items():
+                setattr(item, key, value)
+            
+            self.db.commit()
+            
+            self.db.refresh(item)
 
-        Args:
-            id (int): The ID of the profile.
-            profile (ProfileUpdateRequest): The profile update request object.
 
-        Returns:
-            ProfileUpdateResponse: The response data of the updated profile.
-        """
-        item = self.get_by_id(id)
-        data = profile.dict(exclude_unset=True)
-        if "password" in data:
-            data["password"] = "hashed_" + data["password"]
-        for key, value in data.items():
-            setattr(item, key, value)
-        self.db.commit()
-        self.db.refresh(item)
-        response_data = {
-            "id": item.id,
-            "username": item.username,
-            "email": item.email,
-        }
-        return response_data
+            response_data = {
+                "id": item.id,
+                "lastname": item.lastname,
+                "firstname": item.firstname,
+                "middlename": item.middlename,
+                "age": item.age,
+                "mobile": item.mobile,
+                "gender": item.gender,
+                "birthdate": item.birthdate,
+                "civil_status": item.civil_status,
+                "notification_type": item.notification_type,
+                "address": item.address,
+                "created_at": item.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+                "updated_at": item.updated_at.strftime("%Y-%m-%d %H:%M:%S"),
+            }
+
+            return response_data
+        except DatabaseError as e:
+            logging.error(f"Error occurred while updating category: {str(e)}")
+            raise HTTPException(status_code=500, detail="Internal server error")
 

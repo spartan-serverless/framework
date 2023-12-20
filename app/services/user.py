@@ -236,6 +236,7 @@ class UserService:
             if "password" in data:
                 data["password"] = "hashed_" + data["password"]
             for key, value in data.items():
+                print(key);
                 setattr(item, key, value)
             self.db.commit()
             self.db.refresh(item)

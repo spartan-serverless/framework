@@ -8,7 +8,7 @@ from fastapi.templating import Jinja2Templates
 from mangum import Mangum
 
 from config.app import get_settings
-from routes import health, users
+from routes import health, users,profiles
 
 settings = get_settings()
 
@@ -22,6 +22,10 @@ tags_metadata = [
     {
         "name": "Users",
         "description": "This endpoint allows performing operations related to users. It provides functionality to users through a RESTful API.",
+    },
+        {
+        "name": "Profiles",
+        "description": "This endpoint allows performing operations related to profile. It provides functionality to profile through a RESTful API.",
     },
     {
         "name": "Health Check",
@@ -68,6 +72,7 @@ app.add_middleware(
 # Include router for health check and users
 app.include_router(health.route)
 app.include_router(users.route)
+app.include_router(profiles.route)
 
 # Define Jinja2 templates directory
 templates = Jinja2Templates(directory="public")

@@ -1,35 +1,41 @@
-from typing import List
 from pydantic import BaseModel
+from typing import Optional
+from datetime import date
 
 
 class ProfileResponse(BaseModel):
 
     id: int
-    firstname: str
-    lastname: str
-    middlename: str
-    age: str
-    mobile: str
-    gender: str
-    birthdate: str
-    civil_status: str
-    notification_type: str
-    address: str
-    created_at: str
-    updated_at: str
+    firstname: Optional[str]
+    lastname: Optional[str]
+    middlename: Optional[str]
+    age: Optional[int]
+    mobile: Optional[str]
+    gender: Optional[int]
+    birthdate: Optional[date]
+    civil_status: Optional[int]
+    notification_type: Optional[int]
+    address: Optional[str]
+    created_at:  Optional[str]
+    updated_at:  Optional[str]
+
+class SingleProfileResponse(BaseModel):
+
+    data: ProfileResponse
+    status_code: int
 
 class ProfileUpdateResponse(BaseModel):
 
     id: int
-    firstname: str
-    lastname: str
-    middlename: str
-    age: str
-    mobile: str
-    gender: str
-    birthdate: str
-    civil_status: str
-    notification_type: str
-    address: str
-    created_at: str
-    updated_at: str
+    firstname: Optional[str]
+    lastname: Optional[str]
+    middlename: Optional[str]
+    age: Optional[int]
+    mobile: Optional[str]
+    gender: Optional[int]
+    birthdate: Optional[date]
+    civil_status: Optional[int]
+    notification_type: Optional[int]
+    address: Optional[str]
+    created_at:  Optional[str]
+    updated_at:  Optional[str]
