@@ -57,7 +57,6 @@ class ProfileService:
                 self.db.refresh(user)
 
             profile = self.db.query(Profile).filter(Profile.user_id == id).first()
-            print(profile)
             profile_data = update_request.dict(exclude_unset=True)
 
             for key, value in profile_data.items():
@@ -87,3 +86,4 @@ class ProfileService:
         except DatabaseError as e:
             logging.error(f"Error occurred while updating category: {str(e)}")
             raise HTTPException(status_code=500, detail="Internal server error")
+    
