@@ -22,43 +22,13 @@ route = APIRouter(
     prefix="/api", tags=["Profiles"], responses={404: {"description": "Not found"}}
 )
 
-##response_model=SingleProfileResponse
-
-def __init__(self, db: Session):
-    """
-    Initialize the UserService class.
-
-    Args:
-        db (Session): The database session.
-    """
-    self.db = db
     
 @route.get("/settings/profile")
-async def get_profile (db: Session = Depends(get_session)):
-
-    user = db.query(User).get(1)
-    profile = db.query(Profile).filter(Profile.user_id == user.id).first()
-
-    if user and profile:
-        response_data = {
-            "id": profile.id,
-            "firstname": profile.firstname,
-            "lastname": profile.lastname,
-            "middlename": profile.middlename,
-            "birthdate": profile.birthdate.strftime("%Y-%m-%d") if profile.birthdate else None,
-            "civil_status": profile.civil_status,
-            "mobile": profile.mobile,
-            "address": profile.address,
-            "gender": profile.gender,
-            "notification_type": profile.notification_type,
-            "user": {
-                "id": user.id,
-                "username": user.username,
-                "email": user.email,
-            },
-        }
-
-        return {"data": response_data, "status_code": 200}
+async def get_profile(db: Session = Depends(get_session)):
+    profile_service.db = db
+    user_id = 1 
+    response_data = profile_service.get_profile(user_id)
+    return {"data": response_data, "status_code": 200}
     
 @route.put("/settings/profile", status_code=200, )
 async def update_user(
@@ -66,6 +36,5 @@ async def update_user(
 ):
     profile_service.db = db
     updated_profile = profile_service.update(1, update_request)
-    print(updated_profile)
     return {"data": updated_profile, "status_code": 200}
 

@@ -86,4 +86,31 @@ class ProfileService:
         except DatabaseError as e:
             logging.error(f"Error occurred while updating category: {str(e)}")
             raise HTTPException(status_code=500, detail="Internal server error")
-    
+        
+        
+    def get_profile(self, user_id: int) -> dict:
+        
+        user = self.db.query(User).get(user_id)
+        profile = self.db.query(Profile).filter(Profile.user_id == user_id).first()
+        
+        if user and profile:
+            response_data = {
+                "id": profile.id,
+                "firstname": profile.firstname,
+                "lastname": profile.lastname,
+                "middlename": profile.middlename,
+                "birthdate": profile.birthdate.strftime("%Y-%m-%d") if profile.birthdate else None,
+                "civil_status": profile.civil_status,
+                "mobile": profile.mobile,
+                "address": profile.address,
+                "gender": profile.gender,
+                "notification_type": profile.notification_type,
+                "user": {
+                    "id": user.id,
+                    "username": user.username,
+                    "email": user.email,
+                },
+            }
+            return response_data
+        else:
+            raise HTTPException(status_code=404, detail="User or profile not found")
